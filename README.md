@@ -8,8 +8,7 @@ This repository should be forked then modified to suit your modding needs. For a
 
 ## Contribution
 
-We are **NOT** accepting any pull requests that change the environment in any way that isn't abstract, and/or necessary. Please state valid justification as to why your code should be merged.
-If your code does get accepted, please feel free to add your name to the `contributors` list in the *fabric.mod.json*. 
+We are **NOT** accepting any pull requests that change the environment in any way that isn't abstract, and/or necessary. Please state valid justification as to why your code should be merged. 
 
 ## License
 
