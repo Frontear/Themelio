@@ -1,16 +1,37 @@
 plugins {
+    id "fabric-loom" version "0.2.6-SNAPSHOT"
     id "java"
 }
 
-group "com.github.frontear"
-version "0.1"
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+archivesBaseName = mod_name
+version = mod_version
+group = mod_group
 
 dependencies {
-    testCompile group: "junit", name: "junit", version: "4.12"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    modCompile "net.fabricmc:fabric-loader:${loader_version}"
+}
+
+processResources {
+    inputs.properties "version": mod_version, "loader": loader_version, "minecraft": minecraft_version
+
+    from (sourceSets.main.resources.srcDirs) {
+        include "fabric.mod.json"
+        expand "version": mod_version, "loader": loader_version, "minecraft": minecraft_version
+    }
+
+    from (sourceSets.main.resources.srcDirs) {
+        exclude "fabric.mod.json"
+    }
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = "6.0.1"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
