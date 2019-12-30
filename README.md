@@ -4,7 +4,7 @@ The fundamental base Gradle setup for developing a Fabric Mod, alongside some op
 
 ## Usage
 
-This repository should be forked then modified to suit your modding needs.
+This repository should be forked then modified to suit your modding needs. For any help with modifying the `gradle.properties`, please refer to the [wiki](https://github.com/Frontear/Themelio/wiki)
 
 ## Contribution
 
