@@ -15,15 +15,17 @@ dependencies {
 }
 
 processResources {
-    inputs.properties "version": mod_version, "loader": loader_version, "minecraft": minecraft_version
+    final props = [ "id": mod_name.toLowerCase(), "version": mod_version, "group": mod_group, "name": mod_name, "description": mod_description, "author": mod_author, "loader": loader_version, "minecraft": minecraft_version ]
+
+    inputs.properties props
 
     from (sourceSets.main.resources.srcDirs) {
-        include "fabric.mod.json"
-        expand "version": mod_version, "loader": loader_version, "minecraft": minecraft_version
+        include "fabric.mod.json", "mixins.${props.id}.json"
+        expand props
     }
 
     from (sourceSets.main.resources.srcDirs) {
-        exclude "fabric.mod.json"
+        exclude "fabric.mod.json", "mixins.${props.id}.json"
     }
 }
 
