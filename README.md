@@ -1,6 +1,6 @@
 # Themelio
 
-The fundamental base Gradle setup for developing a Fabric Mod, alongside some optional scripts that help keep your environment up-to-date. The aim of this is to be able to instantly have a fabric environment ready to use
+The fundamental base Gradle setup for developing a Fabric Mod, alongside some optional scripts that help keep your environment up-to-date. The aim of this is to be able to instantly have a fabric environment ready to use.
 
 ## Usage
 
@@ -8,7 +8,7 @@ This repository should be forked, or downloaded, then modified to suit your modd
 
 ## Contribution
 
-We are **NOT** accepting any pull requests that change the environment in any way that isn't abstract, and/or necessary. Please state valid justification as to why your code should be merged
+We are **NOT** accepting any pull requests that change the environment in any way that isn't abstract, and/or necessary. Please state valid justification as to why your code should be merged.
 
 ## License
 
