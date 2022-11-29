@@ -44,14 +44,12 @@ tasks.register("update") {
     description = "Updates your environment to use the latest version of Minecraft"
 
     final version = [:]
-    final stable_version = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v2/versions/game")).find {
-        it["stable"] == true
-    }
-    final metadata = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v1/versions/loader/$stable_version")) // todo: bump to v2
 
-    version["minecraft_version"] = stable_version
-    version["loader_version"] = metadata["loader"]["version"]
-    version["yarn_version"] = metadata["mappings"]["version"]
+    version["minecraft_version"] = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v2/versions/game")).find {
+        it["stable"] == true
+    }["version"]
+    version["loader_version"] = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v2/versions/loader/${version['minecraft_version']}"))[0]["loader"]["version"]
+    version["yarn_version"] = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v2/versions/yarn/${version['minecraft_version']}"))[0]["version"]
 
     final properties = file("gradle.properties")
     final lines = properties.readLines()
