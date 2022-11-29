@@ -21,11 +21,11 @@ dependencies {
 processResources {
     final props = [
             "minecraft": project.minecraft_version.find("\\d\\.\\d{1,2}"), // pulls the main version for mc (1.19.2 -> 1.19, 1.12.2 -> 1.12, 1.8.9 -> 1.8)
-            "modid": project.mod_name.toLowerCase(),
-            "loader": project.loader_version,
-            "version": project.version,
-            "author": project.mod_author,
-            "name": project.mod_name
+            "modid"    : project.mod_name.toLowerCase(),
+            "loader"   : project.loader_version,
+            "version"  : project.version,
+            "author"   : project.mod_author,
+            "name"     : project.mod_name
     ]
 
     inputs.properties props
