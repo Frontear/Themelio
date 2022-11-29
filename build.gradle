@@ -1,0 +1,70 @@
+import groovy.json.JsonSlurper
+
+plugins {
+    id "fabric-loom" version "1.0-SNAPSHOT"
+}
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
+archivesBaseName = project.mod_name
+version = project.mod_version
+group = project.mod_group
+
+repositories {
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_version}:v2"
+}
+
+processResources {
+    final props = [
+            "minecraft": project.minecraft_version.find("\\d\\.\\d{1,2}"), // pulls the main version for mc (1.19.2 -> 1.19, 1.12.2 -> 1.12, 1.8.9 -> 1.8)
+            "modid": project.mod_name.toLowerCase(),
+            "loader": project.loader_version,
+            "version": project.version,
+            "author": project.mod_author,
+            "name": project.mod_name
+    ]
+
+    inputs.properties props
+
+    filesMatching("fabric.mod.json") {
+        expand props
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = Integer.parseInt(JavaVersion.VERSION_17.toString())
+}
+
+tasks.register("update") {
+    group = "Themelio"
+    description = "Updates your environment to use the latest version of Minecraft"
+
+    final version = [:]
+    final stable_version = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v2/versions/game")).find {
+        it["stable"] == true
+    }
+    final metadata = new JsonSlurper().parse(new URL("https://meta.fabricmc.net/v1/versions/loader/$stable_version")) // todo: bump to v2
+
+    version["minecraft_version"] = stable_version
+    version["loader_version"] = metadata["loader"]["version"]
+    version["yarn_version"] = metadata["mappings"]["version"]
+
+    final properties = file("gradle.properties")
+    final lines = properties.readLines()
+
+    properties.withWriter { w ->
+        lines.each {
+            def split = it.split(" = ")[0]
+
+            if (version.containsKey(split)) {
+                it = "$split = ${version[split]}"
+            }
+
+            w.writeLine(it)
+        }
+    }
+}
