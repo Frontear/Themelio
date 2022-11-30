@@ -56,10 +56,10 @@ tasks.register("update") {
 
     properties.withWriter { w ->
         lines.each {
-            def split = it.split(" = ")[0]
+            def split = it.split("=")[0].trim()
 
             if (version.containsKey(split)) {
-                it = "$split = ${version[split]}"
+                it = "$split=${version[split]}"
             }
 
             w.writeLine(it)
