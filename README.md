@@ -1,15 +1,13 @@
 # Themelio
 
-The fundamental base Gradle setup for developing a Fabric Mod, alongside some optional scripts that help keep your environment up-to-date. The aim of this is to be able to instantly have a fabric environment ready to use.
+A simple gradle environment pre-configured to develop Minecraft mods using the Fabric modding environment.
 
 ## Usage
 
-You can [generate](https://github.com/Frontear/Themelio/generate) your own repository using this template, then modify to suit your modding needs. For any help with modifying the `gradle.properties`, please refer to the [wiki](https://github.com/Frontear/Themelio/wiki)
-
-## Contribution
-
-We are **NOT** accepting any pull requests that change the environment in any way that isn't abstract, and/or necessary. Please state valid justification as to why your code should be merged. 
+- [Generate](https://github.com/Frontear/Themelio/generate) your own copy of this repository
+- Modify the `gradle.properties` file with your mods information. This data will be retroactively applied to the jar at build time
+- ***optional:*** To update fabric and minecraft to the latest versions, run `./gradlew update`
 
 ## License
 
-This project is licensed under the [GNU General Public License v3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) &#8212; you may copy, distribute and modify the software as long as you track changes/dates in source files.
+This project falls under the [GNU General Public License v3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) &#8212; you may copy, distribute and modify the software as long as you track changes/dates in source files.

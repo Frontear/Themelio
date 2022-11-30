@@ -1,33 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "${id}",
+  "id": "${modid}",
   "version": "${version}",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${group}.${id}.${name}Mod"
+      "io.github.frontear.themelio.ThemelioMod"
     ]
   },
   "mixins": [
-    "mixins.${id}.json"
+    "mixins.themelio.json"
   ],
 
   "depends": {
     "fabricloader": ">=${loader}",
-    "minecraft": "${minecraft}"
+    "minecraft": "${minecraft}",
+    "java": ">=17"
   },
 
   "name": "${name}",
-  "description": "${description}",
+  "description": "A template mod generated via Themelio",
   "contact": {
-    "issues": "https://github.com/${author}/${name}/issues",
-    "sources": "https://github.com/${author}/${name}"
+    "sources": "https://github.com/Frontear/Themelio"
   },
   "authors": [
     "${author}"
   ],
   "contributors": [],
   "license": "GPL-3.0-only",
-  "icon": "assets/${id}/icon.png"
+  "icon": "assets/themelio/icon.png"
 }
