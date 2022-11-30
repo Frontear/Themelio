@@ -4,7 +4,7 @@ plugins {
     id "fabric-loom" version "1.0-SNAPSHOT"
 }
 
-sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17 // do NOT change unless you know what you are doing
 archivesBaseName = project.mod_name
 version = project.mod_version
 group = project.mod_group
@@ -36,7 +36,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = Integer.parseInt(JavaVersion.VERSION_17.toString())
+    it.options.release = Integer.parseInt(sourceCompatibility.toString())
 }
 
 tasks.register("update") {
