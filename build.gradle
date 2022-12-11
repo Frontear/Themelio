@@ -36,7 +36,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = Integer.parseInt(sourceCompatibility.toString())
+    it.options.release = Integer.parseInt(sourceCompatibility.toString()) // TODO: is this even doing anything?
 }
 
 // TODO: possible to prevent updating beyond a version that _THIS_ version of loom can't support?
