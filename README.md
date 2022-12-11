@@ -5,8 +5,8 @@ A simple gradle environment pre-configured to develop Minecraft mods using the F
 ## Usage
 
 - [Generate](https://github.com/Frontear/Themelio/generate) your own copy of this repository
-- Modify the `gradle.properties` file with your mods information. This data will be retroactively applied to the jar at build time
-- ***optional:*** To update fabric and minecraft to the latest versions, run `./gradlew update`
+- Modify the `gradle.properties` file with your mods' information. This data will be retroactively applied to the jar at build time
+- ***optional:*** To update fabric and minecraft to the latest versions, run `./gradlew updateEnv`
 
 ## License
 

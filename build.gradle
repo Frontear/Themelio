@@ -39,6 +39,7 @@ tasks.withType(JavaCompile).configureEach {
     it.options.release = Integer.parseInt(sourceCompatibility.toString())
 }
 
+// TODO: possible to prevent updating beyond a version that _THIS_ version of loom can't support?
 tasks.register("updateEnv") {
     group = "Themelio"
     description = "Updates your environment to use the latest version of Minecraft"
